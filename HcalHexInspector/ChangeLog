@@ -1,0 +1,34 @@
+2008-07-28  Eric Hazen  <hazen@cms1.bu.edu>
+
+	* Add simple QIE data check
+	*  CheckQIEData (bool) parameter turns on this feature
+	*  for now, the results are printed in text only to stdout
+
+2008-07-17  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+	* Put in cms1.bu.edu subversion archive
+
+2008-06-14  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+	* Add lots of new features to FedErrors, FedGet classes
+	* Add Digi size, HTR CRC checks
+	* Fix many bugs in Digi unpacking
+
+2008-04-29  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+	* Slight changes to compile under CMSSW_2_0_5
+
+2008-04-17  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+	* DataIntegrity.cc (DataIntegrity): Add new HTR/FED plot
+
+	* Add EvN, OrN, BcN mismatch to per fed plot
+	* remove spurious stats boxes
+
+2008-04-07  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+	* First "release" of EricDIM (Jason, Arno)
+	* update Wiki Page
+  	  https://twiki.cern.ch/twiki/bin/view/Main/EricDQM
+
+	

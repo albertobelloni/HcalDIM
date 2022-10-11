@@ -1,0 +1,9 @@
+<bin name="GetDccTT" file="GetDccTTS.cc"/>
+<bin name="MonRun" file="MonRun.cc"/>
+<bin name="TestMon" file="TestMon.cc"/>
+<bin name="CheckZS" file="CheckZS.cc"/>
+<bin name="dump_DTC" file="dump_DTC.cc"/>
+<bin name="dump_FED" file="dump_FED.cc"/>
+<bin name="dump_sort" file="dump_sort.cc"/>
+<bin name="undump_new_fedkit" file="undump_new_fedkit.cc"/>
+<use name="HcalDIM/HcalHexInspector"/>
