@@ -10,7 +10,7 @@ process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring('file:step3.root'))
 
 
-ericdim = cms.EDAnalyzer(
+hcalhexinspector = cms.EDAnalyzer(
     'HcalHexInspector',
     dumpBinary = cms.untracked.bool(True),
     debug = cms.untracked.bool(True)
