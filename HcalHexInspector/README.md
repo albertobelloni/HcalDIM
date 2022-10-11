@@ -4,13 +4,13 @@ The EricDIM suite of tools started its development in 2008, by the hands of Eric
 
     https://twiki.cern.ch/twiki/bin/view/Main/EricDQM
 
-The current versions run with `CMSSW 10_6_30`; the instructions on lxplus CentOS7 are not unusual:
+The current versions run with `CMSSW 12_0_4`; the instructions on lxplus CentOS7 are not unusual:
 
 ```
-	cmsrel CMSSW_10_6_22
-	cd CMSSW_10_6_22/src
+	cmsrel CMSSW_12_0_4
+	cd CMSSW_10_0_4/src
 	cmsenv
-	git clone ...
+	git clone https://github.com/albertobelloni/HcalDIM.git
 	scram b -j 8
 ```
 
