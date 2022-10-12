@@ -1,6 +1,6 @@
-# EricDIM: tools for checking health of HCAL data
+# HcalHexInspector: tools for checking health of HCAL data
 
-The EricDIM suite of tools started its development in 2008, by the hands of Eric Hazen (BU). Documentation about the main tools is available at the following twiki page:
+The HcalHexInspector suite of tools started its development in 2008, by the hands of Eric Hazen (BU). Documentation about the main tools, formerly known as `EricDIM`, is available at the following twiki page:
 
     https://twiki.cern.ch/twiki/bin/view/Main/EricDQM
 
@@ -14,7 +14,7 @@ The current versions run with `CMSSW 12_0_4`; the instructions on lxplus CentOS7
 	scram b -j 8
 ```
 
-The main workhorse is the EDM plugin EricDIM; it is run using the python script `test/test_cfg.py`.
+The main workhorse is the EDM plugin HcalHexInspector; it is run using the python script `test/run_cfg.py`.
 
 List of tools:
 
