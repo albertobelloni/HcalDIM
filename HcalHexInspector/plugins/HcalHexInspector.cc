@@ -22,7 +22,7 @@
 
 // user include files
 #include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
@@ -56,7 +56,7 @@ void print_qie_histo( int* histo, int max_count);
 // class declaration
 //
 
-class HcalHexInspector : public edm::EDAnalyzer {
+class HcalHexInspector : public edm::one::EDAnalyzer<> {
 public:
   explicit HcalHexInspector(const edm::ParameterSet&);
   ~HcalHexInspector();
@@ -599,7 +599,10 @@ HcalHexInspector::analyze(const edm::Event& e, const edm::EventSetup& iSetup)
 	h_payloadSize->Fill( size32);
 	int part = DataIntegrity::FedToPartition[i_fed];
 	h_payloadPart[part]->Fill( size32);
-	h_payloadByFED[i_fed]->Fill( size32);
+	// There seems to be one hist file per FED, with indices 0, 1, 2, ...
+	// but i_fed seems to be (FED number - 700), which does NOT usually match
+	// \todo Fix this mismatch
+	//h_payloadByFED[i_fed]->Fill( size32);
 
 	// fill zs_sum by HTR/ch and FED
 	for( int h=0; h<FEDGET_NUM_HTR; h++) {

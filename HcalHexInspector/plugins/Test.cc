@@ -22,7 +22,7 @@
 
 // user include files
 #include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
@@ -41,7 +41,7 @@ using namespace edm;
 #include "HcalDIM/HcalHexInspector/interface/meta.hh"
 #include "HcalDIM/HcalHexInspector/interface/DataIntegrity.hh"
 
-class Test : public edm::EDAnalyzer {
+class Test : public edm::one::EDAnalyzer<> {
    public:
       explicit Test(const edm::ParameterSet&);
       ~Test();

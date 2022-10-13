@@ -12,7 +12,11 @@ process.source = cms.Source("PoolSource",
 
 hcalhexinspector = cms.EDAnalyzer(
     'HcalHexInspector',
+    feds = cms.untracked.vint32(712,731), # things seem not to work w/o explicit list of FEDs...
     dumpBinary = cms.untracked.bool(True),
+    dumpLevel = cms.untracked.int32(4),
+    CheckQIEData = cms.untracked.bool(True),
+    HistoQIEData = cms.untracked.bool(True),
     debug = cms.untracked.bool(True)
 )
 

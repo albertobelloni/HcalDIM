@@ -31,4 +31,163 @@
 	* update Wiki Page
   	  https://twiki.cern.ch/twiki/bin/view/Main/EricDQM
 
-	
+EricRender/Changelog
+
+2008-07-30  Eric Hazen  <hazen@hazen-desktop>
+
+        * Render a root file produced by EricDIM as PostScript
+          (which can then be converted to PDF with ps2pdf)
+        * Bricolage added to draw boxes and legend on "HTR FED Overview" plot
+
+MonScan/ChangeLog
+
+2008-10-23  Eric Shearer Hazen  <ehazen@srv-C2C05-07.cms>
+
+        * MonRun.cc: Add column expressions and debug
+        * GetDccTTS: fix bugs
+
+2008-10-10  Eric Shearer Hazen  <ehazen@srv-C2C05-07.cms>
+
+        * Add GetDccTTS, fix various things.
+
+2008-10-10  Eric Shearer Hazen  <ehazen@lxplus245.cern.ch>
+
+        * First working version.  Command-line tool "MonRun" usage:
+        MonRun <run_number> <file1> [<file2>...]
+
+        Searches HCAL_SUPERVISOR_STATE file (path hardwired in MonRun.cc) for
+        run time range.  Does binary search for start of time in each <file>
+        and outputs matching lines.
+
+        Basically a test bed for the class, but could be used in a script.
+
+RawAnalysis/ChangeLog
+
+2013-10-18  Eric Hazen  <hazen@eric-desktop>
+
+        * dump_DTC.cc - Add checking features to handle BcN/OrN/EvN offsets
+        between uHTR and DTC until we get that fixed
+
+2012-09-10  Eric Hazen  <hazen@cms2.bu.edu>
+
+        * Add dump_DTC.cc for upgrade data format
+
+2008-07-28  Eric Hazen  <hazen@cms1.bu.edu>
+
+        * Add -f option to select one FED
+        * Add dump level 9 for all QIE stuff
+
+2008-07-17  Eric Hazen  <hazen@cms1.bu.edu>
+
+        * Put in subversion
+
+2008-07-15  Eric Shearer Hazen  <ehazen@lxplus232.cern.ch>
+
+        * Re-sync with cms1/cms2 versions of FedGet, dump_FED.
+        * Add -c, -h options to dump_FED
+        * update FedGet to dump HTR payloads in parallel (dump_level=4)
+
+2008-05-10  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+        * Change sort_beef.cc to dump_sort.cc
+          Fix command line options to be more similar to dump_FED.cc
+
+2008-04-17  Eric Shearer HAZEN  <ehazen@pcuscms01.cern.ch>
+
+        * Fix dump level to work as documented
+
+2008-04-02  Eric Hazen  <hazen@cms2.bu.edu>
+
+        * First release of dump_FED.exe utility
+        This program can dump 'deadbeef' format raw binary files,
+        such as produced by the 'DCC/DUMP' command of DCCdiagnose.exe.
+
+        It takes a few options:
+
+        <filename>   name of ".dat" binary file, which must start with 0xdeadbeef.
+
+        -d <level>
+           Dump every event
+             level = 1   Dump DCC headers only
+             level = 2   Dump DCC and HTR headers
+             level = 3   Dump raw hex data
+
+        -e   Check EvN
+        -b   Check BcN
+        -o   Check OrN
+        -s   Check HTR status and LRB errors
+        -t   Display TTS state changes
+
+MonScan/README
+
+Simple command-line tools to extract MonLogger data from big test files.
+First is is recommended to make a variable pointing to the MonLogger output:
+
+   export MON="/nfshome0/hcalsw/monlog_loc/ALL"
+
+To extract data for a particular run:
+
+   ./MonRun <run> <file>
+
+i.e.
+
+   ./MonRun 67122 $MON/MONITOR_DCC_STTS_STATE_TIMERS.txt
+
+This will print all rows for the run number.  To specify which
+columns to include in the output, specify each with -c:
+
+   ./MonRun 67122 $MON/MONITOR_DCC_STTS_STATE_TIMERS.txt -c OVF_WARN_TIMER -c BUSY_TIMER
+
+To filter for particular values, use an expression for -c:
+
+   ./MonRun 67122 $MON/MONITOR_DCC_STTS_STATE_TIMERS.txt -c 'OVF_WARN_TIMER>0' -c 'BUSY_TIMER>0'
+
+    NOTE:  you must quote or escape the expressions if you use '>' or '<'.
+
+Expression Syntax:
+
+    <column><op><value>
+
+    <column> = any column name found in the file
+    <op> :== { "=" | "!=" | ">" | "<" }
+    <value> = a 64-bit decimal or hex value
+
+The comparisons are currently only numeric.
+
+Finally, there is another program "GetDccTTS" which will read lines from
+MONITOR_DCC_STTS_STATE_TIMERS.txt (output from first MonRun example above)
+and summarize the TTS states by FED.
+
+GetStatus/ChangeLog
+
+2008-08-30  Eric Shearer Hazen  <hazen@lxcmdtest3>
+
+        * Changes to htr scripts by Tullio for debugging close-space triggers
+
+2008-07-29  Eric Shearer Hazen  <ehazen@srv-C2C05-07.cms>
+
+        * Put in subversion.
+          Status capture from all DCC and HTR to a single directory.
+          To use:
+            Extract tarball
+            $ cd GetStatus
+            $ ./getAllCrates.sh <run_number>
+            (creates a directory tree under run#####Output/)
+
+          To make HTML summary:
+            $ ./link_errors.pl run#####Output/* > Run#####.html
+
+AutoDIM/README
+
+This directory contains some tools to automatically run EricDIM on a range of runs
+found by reading the DBS database.
+
+The perl script queries the DBS for each run.  For any run which reports files,
+a trivial CMSSW job is run to see if there are any HCAL FEDs in the run.
+If there are, an EricDIM job is run.
+
+  find_runs_dbs.pl   main perl script.  Requires some tweaking.
+                     usage:  find_runs_dbs.pl <first_run> <last_run>
+
+  DDSearchCLI.py     DBS python script downloaded from DBS2 page
+  EricRender.cc      Root script to render EricDIM root output to pdf
