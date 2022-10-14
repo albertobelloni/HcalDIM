@@ -48,7 +48,7 @@ using namespace edm;
 //#include "HcalDIM/HcalHexInspector/interface/crc16d64.hh"
 //#include "HcalDIM/HcalHexInspector/interface/meta.hh"
 //#include "HcalDIM/HcalHexInspector/interface/DataIntegrity.hh"
-#include "HcalDIM/HcalHexInspector/interface/FedGet.hh"
+#include "HcalDIM/HcalHexInspector/interface/FedGet_Run3.hh"
 
 class HcalFastFEDCheck : public edm::one::EDAnalyzer<> {
 public:
@@ -171,7 +171,7 @@ HcalFastFEDCheck::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
 	<< " payload " << payload << endl;
 
    // run our unpacker on it
-   FedGet fed( payload, size32, 0x2c36);
+   FedGet_Run3 fed( payload, size32, 0x2c36);
    
    // dump it.  Various values give various format for output.
    // 4 is a reasonable value
