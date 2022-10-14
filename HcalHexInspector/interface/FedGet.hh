@@ -70,8 +70,9 @@ public:
   uint8_t fTTS() { return (m_raw[4] >> 8) & 0xf; } ///< Get TTS state from DCC header
 
   //! Get orbit number from DCC header (N.B. firmware version dependent!)
-  uint32_t OrN() { return ( (m_DCCrev>=0x2c10) ? (((m_raw[2] >> 4) & 0xfffffff) |
-						  ((m_raw[3] << 28) & 0xf0000000))
+  uint32_t OrN() { return ( (m_DCCrev>=0x2c10) ?
+			    (((m_raw[2] >> 4) & 0xfffffff) |
+			     ((m_raw[3] << 28) & 0xf0000000))
 			    : (m_raw[2] & 0xffffffff)); }
 
   //! Get calibration type from DCC header
