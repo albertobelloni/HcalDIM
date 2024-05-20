@@ -1,0 +1,5 @@
+<map id="FedErrors" name="FedErrors">
+<area shape="rect" id="Node000001" title="Error checking class for FED data." alt="" coords="5,334,135,839"/>
+<area shape="rect" id="Node000002" href="$classFedGet.html" title="Class to access items within HCAL FED Data with minimal unpacking." alt="" coords="16,5,124,271"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,271,73,317,67,317,67,271"/>
+</map>

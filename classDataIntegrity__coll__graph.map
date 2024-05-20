@@ -1,0 +1,5 @@
+<map id="DataIntegrity" name="DataIntegrity">
+<area shape="rect" id="Node000001" title="Manage data integrity plots for HCAL." alt="" coords="5,384,145,969"/>
+<area shape="rect" id="Node000002" href="$classEH1.html" title="Support for time&#45;series plots (i.e. trigger rate vs event number)" alt="" coords="21,5,130,291"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,291,78,366,73,366,73,291"/>
+</map>
