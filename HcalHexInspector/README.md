@@ -16,6 +16,10 @@ The current versions run with `CMSSW 12_0_4`; the instructions on lxplus CentOS7
 
 The main workhorse is the EDM plugin HcalHexInspector; it is run using the python script `test/run_cfg.py`.
 
+Doxygen documentation is available at:
+
+    https://albertobelloni.github.io/HcalDIM/
+
 List of tools:
 
 - `MonRun`:
